@@ -44,6 +44,45 @@ class LinkedList {
         return counter;
     }
 
+    headMethod() {
+        return this.head.value;
+    }
+
+    tailMethod() {
+        return this.tail.value;
+    }
+
+    at(index) {
+        let nodeNow = this.head;
+
+        for(let i = 0; i < index; i++) {
+            nodeNow = nodeNow.nextNode;
+        }
+
+        return nodeNow;
+    }
+
+    pop() {
+    
+        let currentNode = this.head;
+        let prevNode = null;
+    
+        while (currentNode.nextNode) {
+            prevNode = currentNode;
+            currentNode = currentNode.nextNode;
+        }
+
+        if (!prevNode) {
+            this.head = null;
+        } else {
+            prevNode.nextNode = null;
+        }
+    
+        this.tail = prevNode;
+    
+        return currentNode.value;
+    }
+
 }
 
 const linkedList = new LinkedList();
@@ -69,3 +108,18 @@ console.log(linkedList.head.nextNode.nextNode.value);
 // Test size function
 let listSize = linkedList.size();
 console.log(listSize);
+
+// Test head function
+let listHead = linkedList.headMethod();
+console.log(listHead);
+
+// Test tail function
+let listTail = linkedList.tailMethod();
+console.log(listTail);
+
+// Test at function
+let nodeAt = linkedList.at(1);
+console.log(nodeAt.value);
+
+// Test pop function
+console.log(linkedList.pop());
