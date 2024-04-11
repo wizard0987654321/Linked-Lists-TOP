@@ -83,6 +83,44 @@ class LinkedList {
         return currentNode.value;
     }
 
+    contains(par) {
+        let nodeNow = this.head;
+        while(nodeNow) {
+            if (nodeNow.value == par) {
+                return true;
+            }
+            nodeNow = nodeNow.nextNode;
+        }
+        return false;
+    }
+
+    find(par) {
+        let nodeNow = this.head;
+        let counter = 0;
+
+        while(nodeNow) {
+            if (nodeNow.value == par) {
+                return counter;
+            }
+            nodeNow = nodeNow.nextNode;
+            counter++;
+        }
+        return null;
+    }
+
+    toString() {
+        let currentNode = this.head;
+        let result = '';
+    
+        while (currentNode) {
+            result += `(${currentNode.value}) -> `;
+            currentNode = currentNode.nextNode;
+        }
+    
+        result += 'null';
+    
+        return result;
+    }
 }
 
 const linkedList = new LinkedList();
@@ -123,3 +161,14 @@ console.log(nodeAt.value);
 
 // Test pop function
 console.log(linkedList.pop());
+
+// Test contains function
+console.log(linkedList.contains(2));
+console.log(linkedList.contains(9));
+
+// Test find function
+console.log(linkedList.find(1));
+console.log(linkedList.find(9));
+
+// Test toString function
+console.log(linkedList.toString());
